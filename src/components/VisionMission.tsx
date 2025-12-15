@@ -3,10 +3,26 @@
 import { useState } from 'react'
 import { Target, Eye, Users, Award, CheckCircle, TrendingUp } from 'lucide-react'
 
+// Define proper TypeScript types
+interface VisionMissionData {
+  [key: string]: {
+    icon: React.ReactNode
+    title: string
+    description: string
+    color: string
+  }
+}
+
+interface CoreValue {
+  icon: React.ReactNode
+  title: string
+  description: string
+}
+
 export default function VisionMission() {
   const [activeTab, setActiveTab] = useState('vision')
 
-  const visionData = {
+  const visionData: VisionMissionData = {
     vision: {
       icon: <Eye className="w-12 h-12" />,
       title: 'Our Vision',
@@ -21,7 +37,7 @@ export default function VisionMission() {
     }
   }
 
-  const coreValues = [
+  const coreValues: CoreValue[] = [
     {
       icon: <Users className="w-8 h-8" />,
       title: 'Integrity',
@@ -43,6 +59,9 @@ export default function VisionMission() {
       description: 'Embracing cutting-edge technology'
     }
   ]
+
+  // Safe access with type checking
+  const currentVisionData = visionData[activeTab]
 
   return (
     <section className="py-24 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden">
@@ -69,7 +88,7 @@ export default function VisionMission() {
         <div className="max-w-4xl mx-auto mb-20">
           <div className="flex justify-center mb-12">
             <div className="inline-flex bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-2 border border-blue-100">
-              {['vision', 'mission'].map((tab) => (
+              {(['vision', 'mission'] as const).map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
@@ -89,19 +108,19 @@ export default function VisionMission() {
           <div className="bg-gradient-to-br from-white to-blue-50 rounded-3xl shadow-2xl p-12 border border-blue-100">
             <div className="flex flex-col md:flex-row items-center gap-12">
               {/* Icon */}
-              <div className={`w-32 h-32 rounded-3xl bg-gradient-to-br ${visionData[activeTab].color} flex items-center justify-center shadow-2xl`}>
+              <div className={`w-32 h-32 rounded-3xl bg-gradient-to-br ${currentVisionData.color} flex items-center justify-center shadow-2xl`}>
                 <div className="text-white">
-                  {visionData[activeTab].icon}
+                  {currentVisionData.icon}
                 </div>
               </div>
 
               {/* Content */}
               <div className="flex-1">
                 <h3 className="text-3xl font-bold text-gray-900 mb-6">
-                  {visionData[activeTab].title}
+                  {currentVisionData.title}
                 </h3>
                 <p className="text-2xl text-gray-700 leading-relaxed">
-                  {visionData[activeTab].description}
+                  {currentVisionData.description}
                 </p>
               </div>
             </div>

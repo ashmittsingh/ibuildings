@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
@@ -10,13 +10,32 @@ import {
 } from 'lucide-react'
 import Image from 'next/image'
 
+interface NavItem {
+  name: string
+  href: string
+  icon: React.ReactNode
+  badge?: string
+  cta?: boolean
+  megaMenu?: boolean
+  children?: { name: string; href: string }[]
+  sections?: {
+    title: string
+    items: { 
+      name: string; 
+      href: string; 
+      icon: React.ReactNode;
+      description?: string 
+    }[]
+  }[]
+}
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false)
   const pathname = usePathname()
-  const megaMenuRef = useRef(null)
+  const megaMenuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,8 +47,8 @@ const Navbar = () => {
 
   // Close mega menu when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (megaMenuRef.current && !megaMenuRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (megaMenuRef.current && !megaMenuRef.current.contains(event.target as Node)) {
         setIsMegaMenuOpen(false)
         setActiveDropdown(null)
       }
@@ -38,7 +57,7 @@ const Navbar = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-  const navigation = [
+  const navigation: NavItem[] = [
     { 
       name: 'Services', 
       href: '/services',
@@ -48,19 +67,59 @@ const Navbar = () => {
         {
           title: 'Engineering Services',
           items: [
-            { name: 'Structural Engineering', href: '/services/structural-engineering', icon: <Target className="w-4 h-4" /> },
-            { name: 'Structural Audit & Inspection', href: '/services/structural-audit', icon: <Shield className="w-4 h-4" /> },
-            { name: 'Retrofitting & Rehabilitation', href: '/services/retrofitting', icon: <Zap className="w-4 h-4" /> },
-            { name: 'Foundation Engineering', href: '/services/foundation', icon: <Building2 className="w-4 h-4" /> },
+            { 
+              name: 'Structural Engineering', 
+              href: '/services/structural-engineering', 
+              icon: <Target className="w-4 h-4" />,
+              description: 'Advanced structural analysis and design'
+            },
+            { 
+              name: 'Structural Audit & Inspection', 
+              href: '/services/structural-audit', 
+              icon: <Shield className="w-4 h-4" />,
+              description: 'Comprehensive building condition assessment'
+            },
+            { 
+              name: 'Retrofitting & Rehabilitation', 
+              href: '/services/retrofitting', 
+              icon: <Zap className="w-4 h-4" />,
+              description: 'Strengthening existing structures'
+            },
+            { 
+              name: 'Foundation Engineering', 
+              href: '/services/foundation', 
+              icon: <Building2 className="w-4 h-4" />,
+              description: 'Deep foundation design and analysis'
+            },
           ]
         },
         {
           title: 'Consulting Services',
           items: [
-            { name: 'Project Management', href: '/services/project-management', icon: <TrendingUp className="w-4 h-4" /> },
-            { name: 'Construction Supervision', href: '/services/construction-supervision', icon: <Cpu className="w-4 h-4" /> },
-            { name: 'Heritage Conservation', href: '/services/heritage-conservation', icon: <Globe className="w-4 h-4" /> },
-            { name: 'Sustainability Consulting', href: '/services/sustainability', icon: <Target className="w-4 h-4" /> },
+            { 
+              name: 'Project Management', 
+              href: '/services/project-management', 
+              icon: <TrendingUp className="w-4 h-4" />,
+              description: 'End-to-end project delivery'
+            },
+            { 
+              name: 'Construction Supervision', 
+              href: '/services/construction-supervision', 
+              icon: <Cpu className="w-4 h-4" />,
+              description: 'On-site quality control'
+            },
+            { 
+              name: 'Heritage Conservation', 
+              href: '/services/heritage-conservation', 
+              icon: <Globe className="w-4 h-4" />,
+              description: 'Preserving historical structures'
+            },
+            { 
+              name: 'Sustainability Consulting', 
+              href: '/services/sustainability', 
+              icon: <Target className="w-4 h-4" />,
+              description: 'Green building solutions'
+            },
           ]
         }
       ]
@@ -261,7 +320,7 @@ const Navbar = () => {
                   
                   {item.megaMenu && (
                     <div className="ml-6 mt-2 space-y-4">
-                      {item.sections.map((section, idx) => (
+                      {item.sections?.map((section, idx) => (
                         <div key={idx}>
                           <h4 className="text-sm font-semibold text-gray-900 mb-2">{section.title}</h4>
                           <div className="space-y-1">
@@ -300,7 +359,7 @@ const Navbar = () => {
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {navigation.find(nav => nav.megaMenu)?.sections.map((section, idx) => (
+              {navigation.find(nav => nav.megaMenu)?.sections?.map((section, idx) => (
                 <div key={idx}>
                   <h3 className="text-lg font-bold text-gray-900 mb-6 flex items-center">
                     <div className="w-2 h-2 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full mr-3"></div>

@@ -1,7 +1,7 @@
+"use client"
+
 import { useState } from 'react'
 import dynamic from 'next/dynamic'
-
-"use client"
 
 interface EmergencyImageProps {
   src: string
@@ -25,22 +25,22 @@ export default function EmergencyImage({
   // Check if it's an external URL
   const isExternal = src.startsWith('http')
   
-  // For development, use regular img tag
+  // For development or when error occurs, use regular img tag
   if (process.env.NODE_ENV === 'development' || error) {
     return (
       <div 
-        className="`${fallbackColor} ${className} flex items-center justify-center`}"
+        className={`${fallbackColor} ${className} flex items-center justify-center`}
         style={{ width: `${width}px`, height: `${height}px` }}
       >
         {error ? (
-          <span className="text-gray-500 text-sm">Image failed to load</span>"
+          <span className="text-gray-500 text-sm">Image failed to load</span>
         ) : (
           <img
             src={isExternal ? src : src}
             alt={alt}
             width={width}
             height={height}
-            className="className}"
+            className={className}
             onError={() => setError(true)}
           />
         )}
@@ -57,7 +57,8 @@ export default function EmergencyImage({
       alt={alt}
       width={width}
       height={height}
-      className="fixed"
-"
-
-
+      className={className}
+      onError={() => setError(true)}
+    />
+  )
+}

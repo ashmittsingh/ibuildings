@@ -1,11 +1,5 @@
 ﻿/** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    turbo: {
-      // Disable turbopack for production build
-      enabled: false,
-    },
-  },
   images: {
     remotePatterns: [
       {
@@ -14,6 +8,8 @@ const nextConfig = {
       },
     ],
   },
+  outputFileTracingRoot: __dirname,
+  // Remove the turbo section - it's not needed
 }
 
 module.exports = nextConfig
