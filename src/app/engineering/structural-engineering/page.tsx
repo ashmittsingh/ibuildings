@@ -23,7 +23,7 @@ export default function StructuralEngineeringPage() {
     {
       title: 'Code Compliance',
       description: 'Adherence to IS, NBC, ACI, ASCE, Eurocodes, British Standards',
-      icon: <FileCheck className="w-8 h-8" />,"
+      icon: <FileCheck className="w-8 h-8" />,
       features: [
         'Multi-code analysis',
         'Local statutory compliance',
@@ -33,7 +33,7 @@ export default function StructuralEngineeringPage() {
     {
       title: 'Safety Focus',
       description: 'Life safety as paramount consideration in all designs',
-      icon: <Shield className="w-8 h-8" />,"
+      icon: <Shield className="w-8 h-8" />,
       features: [
         'Seismic design',
         'Wind engineering',
@@ -43,7 +43,7 @@ export default function StructuralEngineeringPage() {
     {
       title: 'Buildable Solutions',
       description: 'Practical designs considering construction methodologies',
-      icon: <Building2 className="w-8 h-8" />,"
+      icon: <Building2 className="w-8 h-8" />,
       features: [
         'Constructability reviews',
         'Material optimization',
@@ -91,9 +91,9 @@ export default function StructuralEngineeringPage() {
               {services.map((service, index) => (
                 <div 
                   key={index}
-                  className="bg-white rounded-2xl p-8 shadow-xl border border-blue-100 hover:shadow-2xl transition-shadow""
+                  className="bg-white rounded-2xl p-8 shadow-xl border border-blue-100 hover:shadow-2xl transition-shadow"
                 >
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-6">"
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-6">
                     <div className="text-white">"
                       {service.icon}
                     </div>
@@ -126,7 +126,7 @@ export default function StructuralEngineeringPage() {
                 {methodologies.map((method, index) => (
                   <div 
                     key={index}
-                    className="flex items-center bg-white rounded-lg p-4 shadow-sm""
+                    className="flex items-center bg-white rounded-lg p-4 shadow-sm"
                   >
                     <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-4">"
                       <Target className="w-4 h-4 text-blue-600" />"

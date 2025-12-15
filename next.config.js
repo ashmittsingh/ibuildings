@@ -1,6 +1,11 @@
 ﻿/** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  experimental: {
+    turbo: {
+      // Disable turbopack for production build
+      enabled: false,
+    },
+  },
   images: {
     remotePatterns: [
       {
@@ -8,7 +13,6 @@ const nextConfig = {
         hostname: '**',
       },
     ],
-    domains: ['localhost'],
   },
 }
 
