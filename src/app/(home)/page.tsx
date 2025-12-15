@@ -1,12 +1,10 @@
-import * as React from 'react'
 import HeroSection from '@/components/HeroSection'
-import EngineeringHero from '@/components/EngineeringHero'
 import ServicesSection from '@/components/ServicesSection'
-import ProjectsShowcase from '@/components/ProjectsShowcase'
-import VisionMission from '@/components/VisionMission'
 import WhyChooseUs from '@/components/WhyChooseUs'
+import ProjectsShowcase from '@/components/ProjectsShowcase'
 import Testimonials from '@/components/Testimonials'
 import CTASection from '@/components/CTASection'
+import EngineeringHero from '@/components/EngineeringHero'
 
 export default function Home() {
   return (
@@ -14,11 +12,12 @@ export default function Home() {
       <HeroSection />
       <EngineeringHero />
       <ServicesSection />
-      <ProjectsShowcase />
-      <VisionMission />
       <WhyChooseUs />
+      <ProjectsShowcase />
       <Testimonials />
       <CTASection />
     </main>
   )
 }
+
+
