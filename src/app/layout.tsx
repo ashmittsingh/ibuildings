@@ -1,27 +1,33 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
+// src/app/layout.tsx
+import type { Metadata } from "next";
+import "./globals.css";
+import Navbar from "@/components/shared/Navbar";
 
-const inter = Inter({ subsets: ['latin'] })
+// System font stack - no external dependencies for offline builds
+// Using industry-standard fallback for production reliability
 
-export const metadata = {
-  title: 'iBuildings - Construction & Engineering Solutions',
-  description: 'Leading construction and engineering company in India',
-}
+export const metadata: Metadata = {
+  title: "iBuildings - Structural Engineering",
+  description: "Structural engineering consultancy since 1998",
+};
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body style={{
+        fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+        backgroundColor: 'white',
+        color: '#111827'
+      }}>
         <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <main className="min-h-screen">
+          {children}
+        </main>
       </body>
     </html>
-  )
+  );
 }

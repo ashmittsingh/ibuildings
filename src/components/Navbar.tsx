@@ -4,9 +4,10 @@ import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
-  Phone, Menu, X, Home, Briefcase,
-  FileText, Users, ChevronDown, Building2,
-  Target, Shield, Zap, Cpu, Globe, TrendingUp
+  Phone, Menu, X, Home, Briefcase, Users, 
+  ChevronDown, Building2, Target, Shield, 
+  Zap, Cpu, Globe, TrendingUp, FileText,
+  CheckCircle // Added for Jobs
 } from 'lucide-react'
 import Image from 'next/image'
 
@@ -59,98 +60,114 @@ const Navbar = () => {
 
   const navigation: NavItem[] = [
     { 
-      name: 'Services', 
-      href: '/services',
-      icon: <Briefcase className="w-4 h-4" />,
-      megaMenu: true,
-      sections: [
-        {
-          title: 'Engineering Services',
-          items: [
-            { 
-              name: 'Structural Engineering', 
-              href: '/services/structural-engineering', 
-              icon: <Target className="w-4 h-4" />,
-              description: 'Advanced structural analysis and design'
-            },
-            { 
-              name: 'Structural Audit & Inspection', 
-              href: '/services/structural-audit', 
-              icon: <Shield className="w-4 h-4" />,
-              description: 'Comprehensive building condition assessment'
-            },
-            { 
-              name: 'Retrofitting & Rehabilitation', 
-              href: '/services/retrofitting', 
-              icon: <Zap className="w-4 h-4" />,
-              description: 'Strengthening existing structures'
-            },
-            { 
-              name: 'Foundation Engineering', 
-              href: '/services/foundation', 
-              icon: <Building2 className="w-4 h-4" />,
-              description: 'Deep foundation design and analysis'
-            },
-          ]
-        },
-        {
-          title: 'Consulting Services',
-          items: [
-            { 
-              name: 'Project Management', 
-              href: '/services/project-management', 
-              icon: <TrendingUp className="w-4 h-4" />,
-              description: 'End-to-end project delivery'
-            },
-            { 
-              name: 'Construction Supervision', 
-              href: '/services/construction-supervision', 
-              icon: <Cpu className="w-4 h-4" />,
-              description: 'On-site quality control'
-            },
-            { 
-              name: 'Heritage Conservation', 
-              href: '/services/heritage-conservation', 
-              icon: <Globe className="w-4 h-4" />,
-              description: 'Preserving historical structures'
-            },
-            { 
-              name: 'Sustainability Consulting', 
-              href: '/services/sustainability', 
-              icon: <Target className="w-4 h-4" />,
-              description: 'Green building solutions'
-            },
-          ]
-        }
+      name: 'About', 
+      href: '/about',
+      icon: <Users className="w-4 h-4" />,
+      children: [
+        { name: 'Vision', href: '/about/vision' },
+        { name: 'Mission', href: '/about/mission' },
+        { name: 'Policy', href: '/about/policy' },
+        { name: 'Procedure', href: '/about/procedure' },
+        { name: 'Teams', href: '/about/teams' },
       ]
     },
     { 
       name: 'Projects', 
       href: '/projects',
       icon: <Building2 className="w-4 h-4" />,
-      badge: 'Case Studies'
-    },
-    { 
-      name: 'About', 
-      href: '/about',
-      icon: <Users className="w-4 h-4" />,
-      children: [
-        { name: 'Leadership', href: '/about/leadership' },
-        { name: 'Certifications', href: '/about/certifications' },
-        { name: 'Careers', href: '/about/careers' },
+      megaMenu: true,
+      sections: [
+        {
+          title: 'Sector & Industry',
+          items: [
+            { 
+              name: 'All Projects', 
+              href: '/projects', 
+              icon: <Building2 className="w-4 h-4" />,
+              description: 'Complete portfolio showcase'
+            },
+            { 
+              name: 'Residential Real Estates', 
+              href: '/projects/residential', 
+              icon: <Home className="w-4 h-4" />,
+              description: 'Apartments, villas, townships'
+            },
+            { 
+              name: 'Commercial & Mixed Use', 
+              href: '/projects/commercial', 
+              icon: <Briefcase className="w-4 h-4" />,
+              description: 'Office towers, malls, complexes'
+            },
+            { 
+              name: 'Industrial', 
+              href: '/projects/industrial', 
+              icon: <Zap className="w-4 h-4" />,
+              description: 'Factories, warehouses, plants'
+            },
+            { 
+              name: 'Education', 
+              href: '/projects/education', 
+              icon: <FileText className="w-4 h-4" />,
+              description: 'Schools, colleges, universities'
+            },
+            { 
+              name: 'Hospitality', 
+              href: '/projects/hospitality', 
+              icon: <Globe className="w-4 h-4" />,
+              description: 'Hotels, resorts, convention centers'
+            },
+            { 
+              name: 'Heritage', 
+              href: '/projects/heritage', 
+              icon: <Shield className="w-4 h-4" />,
+              description: 'Historical buildings, monuments'
+            },
+          ]
+        }
       ]
     },
     { 
-      name: 'Insights', 
-      href: '/blog',
-      icon: <FileText className="w-4 h-4" />,
-      badge: 'Latest'
+      name: 'Services', 
+      href: '/services',
+      icon: <Briefcase className="w-4 h-4" />,
+      megaMenu: true,
+      sections: [
+        {
+          title: 'Core Services',
+          items: [
+            { 
+              name: 'Structural & Civil Engineering', 
+              href: '/services/structural-engineering', 
+              icon: <Target className="w-4 h-4" />,
+              description: 'Complete structural design solutions'
+            },
+            { 
+              name: 'Project Management Consultancy', 
+              href: '/services/project-management', 
+              icon: <TrendingUp className="w-4 h-4" />,
+              description: 'End-to-end project delivery'
+            },
+            { 
+              name: 'Structural Audit, Repair & Retrofitting', 
+              href: '/services/structural-audit', 
+              icon: <Shield className="w-4 h-4" />,
+              description: 'Building assessment and rehabilitation'
+            },
+          ]
+        }
+      ]
+    },
+    { 
+      name: 'Jobs', 
+      href: '/jobs',
+      icon: <CheckCircle className="w-4 h-4" />, // Changed icon
+      badge: 'Hiring',
+      cta: true // Marked as CTA for special styling
     },
     { 
       name: 'Contact', 
       href: '/contact',
-      icon: <Phone className="w-4 h-4" />,
-      cta: true
+      icon: <Phone className="w-4 h-4" />
     },
   ]
 
@@ -164,23 +181,16 @@ const Navbar = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-3 group">
-              <div className="relative w-14 h-14">
+            <Link href="/" className="flex items-center space-x-3 group flex-shrink-0">
+              <div className="relative w-20 h-16 flex items-center justify-center overflow-visible">
                 <Image
                   src="/images/logo/logo.jpg"
                   alt="iBuildings Logo"
-                  fill
-                  className="object-contain group-hover:scale-105 transition-transform duration-300"
-                  sizes="56px"
+                  width={80}
+                  height={64}
+                  className="object-contain group-hover:scale-110 transition-transform duration-300 max-w-full h-auto"
+                  priority
                 />
-              </div>
-              <div className="hidden lg:block">
-                <div className="flex flex-col">
-                  <span className="text-2xl font-bold text-gray-900 tracking-tight">iBuildings</span>
-                  <span className="text-xs text-blue-600 font-semibold tracking-wider uppercase">
-                    Engineering Excellence
-                  </span>
-                </div>
               </div>
             </Link>
 
@@ -190,8 +200,8 @@ const Navbar = () => {
                 href="/"
                 className={`px-5 py-3 rounded-lg font-medium transition-all duration-300 ${
                   pathname === '/' 
-                    ? 'text-blue-700 bg-blue-50' 
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
+                    ? 'text-[#1F86C8] bg-[#F5F7FA]' 
+                    : 'text-gray-700 hover:text-[#1F86C8] hover:bg-[#F5F7FA]'
                 }`}
               >
                 <Home className="w-4 h-4 inline mr-2" />
@@ -220,9 +230,13 @@ const Navbar = () => {
                     href={item.href}
                     className={`px-5 py-3 rounded-lg font-medium transition-all duration-300 flex items-center ${
                       pathname.startsWith(item.href) 
-                        ? 'text-blue-700 bg-blue-50' 
-                        : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
-                    }`}
+                        ? item.name === 'Jobs' 
+                          ? 'bg-[#F5F7FA] text-[#1F86C8] border border-[#BFC5CC]'
+                          : 'text-[#1F86C8] bg-[#F5F7FA]' 
+                        : item.name === 'Jobs'
+                          ? 'bg-gradient-to-r from-[#1F86C8] to-[#1A3E6F] text-white hover:from-[#1A3E6F] hover:to-[#1F86C8] shadow-lg hover:shadow-xl'
+                          : 'text-gray-700 hover:text-[#1F86C8] hover:bg-[#F5F7FA]'
+                    } ${item.name === 'Jobs' ? 'px-6 font-semibold' : ''}`}
                   >
                     {item.icon}
                     <span className="ml-2">{item.name}</span>
@@ -230,25 +244,24 @@ const Navbar = () => {
                       <ChevronDown className="w-4 h-4 ml-1" />
                     )}
                     {item.badge && (
-                      <span className="ml-2 px-2 py-1 text-xs bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full">
+                      <span className={`ml-2 px-2 py-1 text-xs rounded-full ${
+                        item.name === 'Jobs'
+                          ? 'bg-white text-[#1F86C8] font-bold animate-pulse'
+                          : 'bg-gradient-to-r from-[#1F86C8] to-[#1A3E6F] text-white'
+                      }`}>
                         {item.badge}
-                      </span>
-                    )}
-                    {item.cta && (
-                      <span className="ml-2 px-2 py-1 text-xs bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full animate-pulse">
-                        Get Quote
                       </span>
                     )}
                   </Link>
 
                   {/* Regular Dropdown */}
                   {item.children && activeDropdown === item.name && !item.megaMenu && (
-                    <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-gray-100 py-2 animate-fadeIn">
+                    <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-[#BFC5CC] py-2 animate-fadeIn">
                       {item.children.map((child) => (
                         <Link
                           key={child.name}
                           href={child.href}
-                          className="flex items-center px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                          className="flex items-center px-4 py-3 text-gray-700 hover:bg-[#F5F7FA] hover:text-[#1F86C8] transition-colors"
                         >
                           <span>{child.name}</span>
                         </Link>
@@ -274,7 +287,7 @@ const Navbar = () => {
               <Link
                 href="/"
                 className={`flex items-center px-4 py-3 rounded-lg mb-2 ${
-                  pathname === '/' ? 'bg-blue-50 text-blue-600' : 'hover:bg-gray-50'
+                  pathname === '/' ? 'bg-[#F5F7FA] text-[#1F86C8]' : 'hover:bg-gray-50'
                 }`}
                 onClick={() => setIsOpen(false)}
               >
@@ -287,7 +300,13 @@ const Navbar = () => {
                   <Link
                     href={item.href}
                     className={`flex items-center justify-between px-4 py-3 rounded-lg ${
-                      pathname.startsWith(item.href) ? 'bg-blue-50 text-blue-600' : 'hover:bg-gray-50'
+                      pathname.startsWith(item.href) 
+                        ? item.name === 'Jobs'
+                          ? 'bg-[#F5F7FA] text-[#1F86C8]'
+                          : 'bg-[#F5F7FA] text-[#1F86C8]'
+                        : item.name === 'Jobs'
+                          ? 'bg-gradient-to-r from-[#1F86C8] to-[#1A3E6F] text-white'
+                          : 'hover:bg-gray-50'
                     }`}
                     onClick={() => !item.children && !item.megaMenu && setIsOpen(false)}
                   >
@@ -295,7 +314,11 @@ const Navbar = () => {
                       {item.icon}
                       <span className="ml-3">{item.name}</span>
                       {item.badge && (
-                        <span className="ml-2 px-2 py-1 text-xs bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full">
+                        <span className={`ml-2 px-2 py-1 text-xs rounded-full ${
+                          item.name === 'Jobs'
+                            ? 'bg-white text-[#1F86C8] font-bold'
+                            : 'bg-gradient-to-r from-[#1F86C8] to-[#1A3E6F] text-white'
+                        }`}>
                           {item.badge}
                         </span>
                       )}
@@ -392,25 +415,47 @@ const Navbar = () => {
                 </div>
               ))}
               
-              {/* Call to Action Section */}
+              {/* Jobs Call to Action Section */}
               <div className="lg:col-span-2 mt-8 pt-8 border-t border-gray-200">
-                <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-8">
-                  <div className="flex flex-col md:flex-row items-center justify-between">
-                    <div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Consultation CTA */}
+                  <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-8">
+                    <div className="flex flex-col">
                       <h4 className="text-2xl font-bold text-gray-900 mb-2">
                         Need Expert Engineering Consultation?
                       </h4>
-                      <p className="text-gray-600">
+                      <p className="text-gray-600 mb-4">
                         Schedule a meeting with our Principal Engineer
                       </p>
+                      <Link
+                        href="/contact"
+                        className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-xl hover:from-blue-700 hover:to-cyan-700 transition-all transform hover:scale-105 shadow-lg w-fit"
+                        onClick={() => setIsMegaMenuOpen(false)}
+                      >
+                        <Phone className="w-4 h-4 mr-2" />
+                        Book Consultation
+                      </Link>
                     </div>
-                    <Link
-                      href="/contact"
-                      className="mt-4 md:mt-0 px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-xl hover:from-blue-700 hover:to-cyan-700 transition-all transform hover:scale-105 shadow-lg"
-                      onClick={() => setIsMegaMenuOpen(false)}
-                    >
-                      Book Consultation
-                    </Link>
+                  </div>
+
+                  {/* Jobs CTA */}
+                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 border border-emerald-200">
+                    <div className="flex flex-col">
+                      <h4 className="text-2xl font-bold text-gray-900 mb-2">
+                        Join Our Team!
+                      </h4>
+                      <p className="text-gray-600 mb-4">
+                        Exciting career opportunities for engineers & architects
+                      </p>
+                      <Link
+                        href="/jobs"
+                        className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all transform hover:scale-105 shadow-lg w-fit"
+                        onClick={() => setIsMegaMenuOpen(false)}
+                      >
+                        <CheckCircle className="w-4 h-4 mr-2" />
+                        View Open Positions
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -420,7 +465,7 @@ const Navbar = () => {
       )}
 
       {/* Custom CSS for Animations */}
-      <style jsx>{`
+      <style jsx> {`
         @keyframes fadeIn {
           from {
             opacity: 0;
@@ -454,5 +499,6 @@ const Navbar = () => {
     </>
   )
 }
+
 
 export default Navbar

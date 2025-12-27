@@ -1,15 +1,9 @@
 ﻿/** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-    ],
+    domains: ['localhost'],
   },
-  outputFileTracingRoot: __dirname,
-  // Remove the turbo section - it's not needed
 }
 
 module.exports = nextConfig

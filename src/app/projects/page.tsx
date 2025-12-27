@@ -1,10 +1,10 @@
-import ProjectsShowcase from "@/components/ProjectsShowcase"
+import Image from 'next/image'
 import { Metadata } from 'next'
-import { Building2, Trophy, Target, Award, Star, Filter, MapPin, Clock } from 'lucide-react'
+import { Building2, Trophy, Target, Award, Star, Filter, MapPin, Clock, MapPinIcon, Users, Zap, Calendar } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Our Projects | iBuildings',
-  description: 'Explore our engineering portfolio in dark blue and lilac theme - residential, commercial, industrial, and heritage projects.',
+  description: 'Explore our engineering portfolio - residential, commercial, industrial, and heritage projects across India and internationally.',
 }
 
 export default function ProjectsPage() {
@@ -15,21 +15,122 @@ export default function ProjectsPage() {
     { icon: <Star className="w-6 h-6" />, value: "98%", label: "Client Satisfaction", color: "text-purple-300" },
   ]
 
-  const projectCategories = [
-    { name: "All Projects", count: 156, active: true, color: "from-blue-600 to-violet-600" },
-    { name: "Residential", count: 68, color: "from-blue-700 to-blue-900" },
-    { name: "Commercial", count: 45, color: "from-indigo-700 to-indigo-900" },
-    { name: "Industrial", count: 28, color: "from-violet-700 to-violet-900" },
-    { name: "Heritage", count: 15, color: "from-purple-700 to-purple-900" },
+  const featuredProjects = [
+    {
+      id: 1,
+      name: "Ethiopia Commercial Complex",
+      location: "Ethiopia",
+      category: "Commercial",
+      image: "/images/projects/Project Photos/Ethiopia/Came_04.png",
+      description: "Multi-storey commercial complex with advanced structural design featuring innovative load distribution systems and seismic resistance.",
+      highlights: ["Advanced Seismic Design", "Commercial Complex", "International Standards"],
+      year: 2022,
+      status: "Completed",
+    },
+    {
+      id: 2,
+      name: "Hubtown Residential Development",
+      location: "Mehsana",
+      category: "Residential",
+      image: "/images/projects/Project Photos/Hubtown/Mehsana/main.jpg",
+      description: "Large-scale residential township with mixed-use development. Engineered for optimal space utilization and residential comfort.",
+      highlights: ["Residential", "Structural Optimization", "Mixed-Use Development"],
+      year: 2020,
+      status: "Completed",
+    },
+    {
+      id: 3,
+      name: "Hotel Golden Nest",
+      location: "Lonavala",
+      category: "Commercial",
+      image: "/images/projects/Project Photos/Hotel Golden Nest/main.jpg",
+      description: "Luxury hospitality project with unique architectural requirements. Engineered for aesthetic appeal and structural integrity.",
+      highlights: ["Hospitality", "Complex Geometry", "Premium Construction"],
+      year: 2021,
+      status: "Completed",
+    },
+    {
+      id: 4,
+      name: "Landmark Tower",
+      location: "Mumbai",
+      category: "Residential",
+      image: "/images/projects/Project Photos/Landmark/main.jpg",
+      description: "High-rise residential tower with cutting-edge structural systems. Advanced foundation design for urban location.",
+      highlights: ["High-Rise", "Urban Engineering", "Premium Residences"],
+      year: 2019,
+      status: "Completed",
+    },
+    {
+      id: 5,
+      name: "GCC School Campus",
+      location: "Lonavala",
+      category: "Institutional",
+      image: "/images/projects/Project Photos/GCC School/main.jpg",
+      description: "Educational institutional building with multi-functional spaces. Designed for safety, durability, and functional efficiency.",
+      highlights: ["Educational", "Institutional", "Multi-Functional Spaces"],
+      year: 2018,
+      status: "Completed",
+    },
+    {
+      id: 6,
+      name: "Ismail Building Retrofit",
+      location: "Mumbai",
+      category: "Heritage",
+      image: "/images/projects/Project Photos/Ismail Building/main.jpg",
+      description: "Historic building restoration and structural upgrade. Preserved heritage while meeting modern safety standards.",
+      highlights: ["Heritage Conservation", "Structural Retrofit", "Historic Preservation"],
+      year: 2020,
+      status: "Completed",
+    },
+    {
+      id: 7,
+      name: "Bakul Lonavala Project",
+      location: "Lonavala",
+      category: "Residential",
+      image: "/images/projects/Project Photos/Bakul Lonavala/main.jpg",
+      description: "Premium residential development in scenic hill location. Engineered for natural integration with landscape.",
+      highlights: ["Residential", "Hill Station", "Scenic Design"],
+      year: 2021,
+      status: "Completed",
+    },
+    {
+      id: 8,
+      name: "Corona Project",
+      location: "Pan-India",
+      category: "Commercial",
+      image: "/images/projects/Project Photos/Corona/main.jpg",
+      description: "Multi-location commercial project executed across various Indian cities with consistent quality and standards.",
+      highlights: ["Commercial", "Multi-Location", "Pan-India Execution"],
+      year: 2019,
+      status: "Completed",
+    },
+    {
+      id: 9,
+      name: "MSN Lab Complex",
+      location: "Bangalore",
+      category: "Industrial",
+      image: "/images/projects/Project Photos/MSN Lab/main.jpg",
+      description: "Advanced laboratory and research facility with specialized structural requirements for scientific equipment.",
+      highlights: ["Industrial", "Laboratory", "Specialized Systems"],
+      year: 2022,
+      status: "Completed",
+    },
   ]
 
-  const featuredCities = [
-    { city: "Mumbai", count: 32, color: "border-blue-500/30" },
-    { city: "Delhi", count: 28, color: "border-indigo-500/30" },
-    { city: "Bangalore", count: 25, color: "border-violet-500/30" },
-    { city: "Chennai", count: 18, color: "border-purple-500/30" },
-    { city: "Hyderabad", count: 15, color: "border-blue-500/30" },
-    { city: "Kolkata", count: 12, color: "border-indigo-500/30" },
+  const projectCategories = [
+    { name: "All Projects", active: true, color: "from-blue-600 to-violet-600" },
+    { name: "Residential", color: "from-blue-700 to-blue-900" },
+    { name: "Commercial", color: "from-indigo-700 to-indigo-900" },
+    { name: "Industrial", color: "from-violet-700 to-violet-900" },
+    { name: "Heritage", color: "from-purple-700 to-purple-900" },
+  ]
+
+  const projectLocations = [
+    { location: "Lonavala", count: 5, color: "border-blue-500/30" },
+    { location: "Mumbai", count: 4, color: "border-indigo-500/30" },
+    { location: "Bangalore", count: 3, color: "border-violet-500/30" },
+    { location: "Ethiopia", count: 2, color: "border-purple-500/30" },
+    { location: "Pan-India", count: 2, color: "border-cyan-500/30" },
   ]
 
   return (
@@ -107,7 +208,7 @@ export default function ProjectsPage() {
                     ? 'bg-white/20 text-white' 
                     : 'bg-gray-100 text-gray-700'
                   }`}>
-                    {category.count}
+                    {(category as any).count || ''}
                   </span>
                   {category.active && (
                     <Target className="w-4 h-4 ml-2 opacity-80" />
@@ -116,17 +217,17 @@ export default function ProjectsPage() {
               ))}
             </div>
 
-            {/* Cities Grid */}
+            {/* Locations Grid */}
             <div className="mt-12 pt-8 border-t border-gray-200">
               <div className="flex items-center mb-6">
                 <MapPin className="w-6 h-6 text-violet-600 mr-3" />
-                <h3 className="text-xl font-bold text-gray-900">Projects by City</h3>
+                <h3 className="text-xl font-bold text-gray-900">Projects by Location</h3>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                {featuredCities.map((city, index) => (
-                  <div key={index} className={`bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-4 text-center border ${city.color} hover:shadow-md transition-all`}>
-                    <div className="text-lg font-bold text-gray-900 mb-1">{city.city}</div>
-                    <div className="text-sm text-gray-600">{city.count} Projects</div>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                {projectLocations.map((loc, index) => (
+                  <div key={index} className={`bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-4 text-center border ${loc.color} hover:shadow-md transition-all`}>
+                    <div className="text-lg font-bold text-gray-900 mb-1">{loc.location}</div>
+                    <div className="text-sm text-gray-600">{loc.count} Projects</div>
                   </div>
                 ))}
               </div>
@@ -135,9 +236,81 @@ export default function ProjectsPage() {
         </div>
       </div>
 
-      {/* Projects Showcase */}
+      {/* Featured Projects Grid */}
       <div className="container mx-auto px-4 py-12">
-        <ProjectsShowcase />
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
+            <p className="text-lg text-gray-600">Showcasing our recent structural engineering achievements</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredProjects.map((project, index) => (
+              <div key={project.id} className="group h-full flex flex-col rounded-2xl overflow-hidden bg-white border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                {/* Project Image */}
+                <div className="relative h-64 bg-gray-200 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
+                  <div className="text-center pt-24 text-white z-20 relative">
+                    <Building2 className="w-16 h-16 mx-auto opacity-50" />
+                    <p className="mt-4 text-sm font-semibold">Professional Project Photography</p>
+                  </div>
+                </div>
+
+                {/* Project Info */}
+                <div className="p-6 flex-1 flex flex-col">
+                  {/* Category Badge */}
+                  <div className="inline-flex mb-4 w-fit">
+                    <span className={`px-3 py-1 text-xs font-bold text-white rounded-full bg-gradient-to-r ${
+                      project.category === 'Commercial' ? 'from-blue-600 to-blue-700' :
+                      project.category === 'Residential' ? 'from-indigo-600 to-indigo-700' :
+                      project.category === 'Industrial' ? 'from-violet-600 to-violet-700' :
+                      'from-purple-600 to-purple-700'
+                    }`}>
+                      {project.category}
+                    </span>
+                  </div>
+
+                  {/* Project Name */}
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors">
+                    {project.name}
+                  </h3>
+
+                  {/* Location */}
+                  <div className="flex items-center text-gray-600 mb-4">
+                    <MapPinIcon className="w-4 h-4 mr-2 text-violet-600" />
+                    <span className="text-sm">{project.location}</span>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-gray-600 text-sm mb-6 flex-1">
+                    {project.description}
+                  </p>
+
+                  {/* Highlights */}
+                  <div className="mb-6 space-y-2">
+                    {project.highlights.map((highlight, i) => (
+                      <div key={i} className="flex items-center text-sm">
+                        <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 mr-2"></div>
+                        <span className="text-gray-700">{highlight}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Footer Info */}
+                  <div className="flex items-center justify-between pt-6 border-t border-gray-200">
+                    <div>
+                      <p className="text-xs text-gray-500">Completed</p>
+                      <p className="text-sm font-bold text-gray-900">{project.year}</p>
+                    </div>
+                    <button className="px-4 py-2 bg-gradient-to-r from-blue-600 to-violet-600 text-white text-sm font-bold rounded-lg hover:from-blue-700 hover:to-violet-700 transition-all">
+                      View Details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Project Timeline Section */}

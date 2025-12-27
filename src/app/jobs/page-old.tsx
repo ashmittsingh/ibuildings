@@ -1,0 +1,1 @@
+// Old version - kept for reference only. See app/jobs/page.tsx for the current implementation.

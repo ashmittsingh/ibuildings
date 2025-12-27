@@ -1,0 +1,52 @@
+/* Inter Font - Fallback */
+/* This is a system font stack fallback for offline builds */
+/* For production, replace with actual Inter WOFF2 files */
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  /* Using system fonts as fallback - in production use local WOFF2 files */
+  src: local('Inter'), 
+       local('system-ui'), 
+       local('-apple-system'), 
+       local('BlinkMacSystemFont'), 
+       local('Segoe UI'), 
+       local('Roboto'), 
+       local('Helvetica Neue'), 
+       local('Arial'), 
+       sans-serif;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('Inter Medium'), 
+       local('system-ui'), 
+       local('-apple-system'), 
+       local('BlinkMacSystemFont'), 
+       local('Segoe UI'), 
+       local('Roboto Medium'), 
+       local('Helvetica Neue'), 
+       local('Arial'), 
+       sans-serif;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Inter Bold'), 
+       local('system-ui'), 
+       local('-apple-system'), 
+       local('BlinkMacSystemFont'), 
+       local('Segoe UI'), 
+       local('Roboto Bold'), 
+       local('Helvetica Neue'), 
+       local('Arial'), 
+       sans-serif;
+}

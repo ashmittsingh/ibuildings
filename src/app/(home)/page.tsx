@@ -1,23 +1,24 @@
-import HeroSection from '@/components/HeroSection'
-import ServicesSection from '@/components/ServicesSection'
-import WhyChooseUs from '@/components/WhyChooseUs'
-import ProjectsShowcase from '@/components/ProjectsShowcase'
-import Testimonials from '@/components/Testimonials'
-import CTASection from '@/components/CTASection'
-import EngineeringHero from '@/components/EngineeringHero'
+// src/app/(home)/page.tsx
+import HeroSection from "@/components/HeroSection";
+import EngineeringHero from "@/components/EngineeringHero";
+import ServicesSection from "@/components/ServicesSection";
+import ProjectsShowcase from "@/components/ProjectsShowcase";
+import VisionMission from "@/components/VisionMission";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import Testimonials from "@/components/Testimonials";
+import CTASection from "@/components/CTASection";
 
 export default function Home() {
   return (
-    <main>
+    <main className="overflow-hidden">
       <HeroSection />
       <EngineeringHero />
       <ServicesSection />
-      <WhyChooseUs />
       <ProjectsShowcase />
+      <VisionMission />
+      <WhyChooseUs />
       <Testimonials />
       <CTASection />
     </main>
-  )
+  );
 }
-
-
