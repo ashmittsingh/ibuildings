@@ -140,13 +140,17 @@ const slides = [
 export default function HeroSection() {
   const [current, setCurrent] = useState(0)
   const [step, setStep] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
 
-  // Slide rotation
+  // Slide rotation with smooth transitions
   useEffect(() => {
-    const interval = setInterval(
-      () => setCurrent((p) => (p + 1) % slides.length),
-      8000
-    )
+    const interval = setInterval(() => {
+      setIsAnimating(true)
+      setTimeout(() => {
+        setCurrent((p) => (p + 1) % slides.length)
+        setIsAnimating(false)
+      }, 300)
+    }, 8000)
     return () => clearInterval(interval)
   }, [])
 
@@ -162,64 +166,174 @@ export default function HeroSection() {
   const slide = slides[current]
   const Icon = slide.icon
 
+  const handleDotClick = (index: number) => {
+    setIsAnimating(true)
+    setTimeout(() => {
+      setCurrent(index)
+      setIsAnimating(false)
+    }, 300)
+  }
+
   return (
-    <section className="relative h-screen max-h-[820px] overflow-hidden bg-gray-900">
-      {/* Background */}
+    <section className="relative h-screen min-h-[600px] max-h-[900px] overflow-hidden bg-gray-900">
+      {/* Background Image with Transition */}
       <div className="absolute inset-0">
-        <Image
-          src={slide.image}
-          alt={slide.title}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-black/65" />
+        <div
+          className={`absolute inset-0 transition-opacity duration-500 ${
+            isAnimating ? "opacity-0" : "opacity-100"
+          }`}
+        >
+          <Image
+            src={slide.image}
+            alt={slide.title}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+            quality={90}
+          />
+        </div>
+        {/* Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-3xl px-6 pt-32">
-        <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-white/10 border border-white/20">
-          <Icon className="w-4 h-4 text-blue-300" />
-          <span className="text-sm text-white">{slide.tagline}</span>
+      {/* Main Content Container */}
+      <div className="relative z-10 h-full flex items-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl">
+            {/* Badge */}
+            <div
+              className={`inline-flex items-center gap-2 mb-4 sm:mb-6 px-3 sm:px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 transition-all duration-700 ${
+                isAnimating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
+              }`}
+            >
+              <Icon className="w-3 h-3 sm:w-4 sm:h-4 text-blue-300 flex-shrink-0" />
+              <span className="text-xs sm:text-sm text-white font-medium">
+                {slide.tagline}
+              </span>
+            </div>
+
+            {/* Title */}
+            <h1
+              className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-4 sm:mb-6 transition-all duration-700 delay-100 ${
+                isAnimating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
+              }`}
+            >
+              {slide.title}{" "}
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-300">
+                {slide.highlight}
+              </span>
+            </h1>
+
+            {/* Description */}
+            <p
+              className={`text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mb-6 sm:mb-8 leading-relaxed transition-all duration-700 delay-200 ${
+                isAnimating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
+              }`}
+            >
+              {slide.description}
+            </p>
+
+            {/* Stats */}
+            <div
+              className={`flex flex-wrap gap-4 sm:gap-6 mb-6 sm:mb-8 transition-all duration-700 delay-300 ${
+                isAnimating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
+              }`}
+            >
+              {slide.stats.map((stat, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10"
+                >
+                  <div className="text-xl sm:text-2xl font-bold text-blue-400">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs sm:text-sm text-gray-300">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Checkpoints */}
+            <div
+              className={`flex flex-wrap gap-3 sm:gap-4 mb-8 sm:mb-10 transition-all duration-700 delay-400 ${
+                isAnimating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
+              }`}
+            >
+              {slide.checkpoints.map((checkpoint, idx) => {
+                const CheckIcon = checkpoint.icon
+                return (
+                  <div
+                    key={idx}
+                    className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10"
+                  >
+                    <CheckIcon className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-400 flex-shrink-0" />
+                    <span className="text-xs sm:text-sm text-gray-200">
+                      {checkpoint.text}
+                    </span>
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* CTA Buttons */}
+            <div
+              className={`flex flex-col sm:flex-row gap-3 sm:gap-4 transition-all duration-700 delay-500 ${
+                isAnimating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
+              }`}
+            >
+              <Link
+                href="/projects"
+                className="group inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-semibold shadow-lg shadow-blue-500/30 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/40"
+              >
+                <span className="text-sm sm:text-base">{slide.cta}</span>
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+
+              <Link
+                href="/contact"
+                className="group inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white font-semibold transition-all duration-300 transform hover:scale-105"
+              >
+                <span className="text-sm sm:text-base">Talk to Our Team</span>
+                <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-y-1 transition-transform" />
+              </Link>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
-          {slide.title}{" "}
-          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-            {slide.highlight}
-          </span>
-        </h1>
-
-        <p className="text-lg text-gray-200 max-w-2xl mb-8">
-          {slide.description}
-        </p>
-
-        <div className="flex gap-4 mb-10">
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 px-6 py-4 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold"
-          >
-            {slide.cta}
-            <ArrowRight className="w-5 h-5" />
-          </Link>
-
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-4 rounded-lg bg-white/10 border border-white/20 text-white"
-          >
-            Talk to Our Team
-            <ChevronDown className="w-5 h-5" />
-          </Link>
-        </div>
+      {/* Navigation Dots */}
+      <div className="absolute bottom-20 sm:bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-2 sm:gap-3">
+        {slides.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => handleDotClick(idx)}
+            className={`transition-all duration-300 rounded-full ${
+              current === idx
+                ? "w-8 sm:w-10 h-2 bg-gradient-to-r from-blue-500 to-cyan-400"
+                : "w-2 h-2 bg-white/40 hover:bg-white/60"
+            }`}
+            aria-label={`Go to slide ${idx + 1}`}
+          />
+        ))}
       </div>
 
       {/* Progress Bar */}
-      <div className="absolute bottom-0 left-0 h-1 w-full bg-white/10">
+      <div className="absolute bottom-0 left-0 h-1 w-full bg-white/10 z-20">
         <div
-          className="h-full bg-gradient-to-r from-blue-500 to-cyan-400 transition-all duration-300"
+          className="h-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 transition-all duration-300 ease-linear"
           style={{ width: `${(step / TOTAL_STEPS) * 100}%` }}
         />
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden sm:block">
+        <div className="flex flex-col items-center gap-2 text-white/60 animate-bounce">
+          <span className="text-xs font-medium">Scroll Down</span>
+          <ChevronDown className="w-5 h-5" />
+        </div>
       </div>
     </section>
   )

@@ -6,7 +6,7 @@ import {
   Building2, Mail, Phone, MapPin, Settings, Target
 } from 'lucide-react'
 import Image from 'next/image'
-import { services as servicesData } from '../src/data/servicesData'
+import { services as servicesData } from '@/data/servicesData';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -150,9 +150,6 @@ const Footer = () => {
             </Link>
             <Link href="/terms" className="text-gray-500 hover:text-gray-300 text-sm">
               Terms of Service
-            </Link>
-            <Link href="/sitemap" className="text-gray-500 hover:text-gray-300 text-sm">
-              Sitemap
             </Link>
           </div>
         </div>

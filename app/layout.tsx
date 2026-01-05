@@ -17,8 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="bg-white text-gray-900">
+    <html lang="en" suppressHydrationWarning>
+      <body className="bg-white text-gray-900" suppressHydrationWarning>
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />

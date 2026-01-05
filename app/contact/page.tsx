@@ -52,11 +52,11 @@ export default function ContactPage() {
   ]
 
   return (
-    <div className="pt-24 min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-white to-[#F5F7FA]">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-blue-900 to-indigo-900">
+      <div className="relative overflow-hidden bg-gradient-to-br from-[#1A3E6F] via-[#1F86C8] to-[#1A3E6F]">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-500"></div>
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#1F86C8] via-[#BFC5CC] to-[#1F86C8]"></div>
         
         <div className="container mx-auto px-4 py-20 md:py-28 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -66,7 +66,7 @@ export default function ContactPage() {
             </div>
             
             <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
-              Let's Talk About Your <span className="text-blue-300">Project</span>
+              Let's Talk About Your <span className="text-[#BFC5CC]">Project</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-100 mb-8 leading-relaxed">
@@ -84,12 +84,12 @@ export default function ContactPage() {
             {contactInfo.map((info, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:border-blue-300 hover:shadow-xl transition-all duration-300"
+                className="bg-white rounded-2xl p-8 shadow-lg border border-[#BFC5CC] hover:border-[#1F86C8] hover:shadow-xl transition-all duration-300"
               >
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-100 to-cyan-100 flex items-center justify-center mb-6 text-blue-600">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#F5F7FA] to-white flex items-center justify-center mb-6 text-[#1F86C8] border border-[#BFC5CC]">
                   {info.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{info.title}</h3>
+                <h3 className="text-xl font-bold text-[#1A3E6F] mb-3">{info.title}</h3>
                 <div className="space-y-1">
                   {info.details.map((detail, idx) => (
                     <p key={idx} className="text-gray-600 text-sm">{detail}</p>
@@ -102,7 +102,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
             {/* Contact Form */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Send us a Message</h2>
+              <h2 className="text-3xl font-bold text-[#1A3E6F] mb-8">Send us a Message</h2>
               
               {submitted ? (
                 <div className="bg-green-50 border border-green-200 rounded-2xl p-8 text-center">
@@ -115,74 +115,74 @@ export default function ContactPage() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label className="block text-gray-900 font-semibold mb-2">Full Name</label>
+                    <label className="block text-[#1A3E6F] font-semibold mb-2">Full Name</label>
                     <input
                       type="text"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                      className="w-full px-4 py-3 rounded-xl border border-[#BFC5CC] focus:outline-none focus:ring-2 focus:ring-[#1F86C8] transition-all"
                       placeholder="Your name"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-gray-900 font-semibold mb-2">Email</label>
+                      <label className="block text-[#1A3E6F] font-semibold mb-2">Email</label>
                       <input
                         type="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-[#BFC5CC] focus:outline-none focus:ring-2 focus:ring-[#1F86C8] transition-all"
                         placeholder="your@email.com"
                       />
                     </div>
                     <div>
-                      <label className="block text-gray-900 font-semibold mb-2">Phone</label>
+                      <label className="block text-[#1A3E6F] font-semibold mb-2">Phone</label>
                       <input
                         type="tel"
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                        className="w-full px-4 py-3 rounded-xl border border-[#BFC5CC] focus:outline-none focus:ring-2 focus:ring-[#1F86C8] transition-all"
                         placeholder="+91 98191 56871"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-gray-900 font-semibold mb-2">Subject</label>
+                    <label className="block text-[#1A3E6F] font-semibold mb-2">Subject</label>
                     <input
                       type="text"
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all"
+                      className="w-full px-4 py-3 rounded-xl border border-[#BFC5CC] focus:outline-none focus:ring-2 focus:ring-[#1F86C8] transition-all"
                       placeholder="Project inquiry"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-gray-900 font-semibold mb-2">Message</label>
+                    <label className="block text-[#1A3E6F] font-semibold mb-2">Message</label>
                     <textarea
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
                       required
                       rows={5}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-xl border border-[#BFC5CC] focus:outline-none focus:ring-2 focus:ring-[#1F86C8] transition-all resize-none"
                       placeholder="Tell us about your project..."
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-xl hover:from-blue-700 hover:to-cyan-700 transition-all transform hover:scale-105 shadow-lg inline-flex items-center justify-center gap-2"
+                    className="w-full px-8 py-4 bg-gradient-to-r from-[#1F86C8] to-[#1A3E6F] text-white font-bold rounded-xl hover:shadow-lg transition-all transform hover:scale-105 shadow-lg inline-flex items-center justify-center gap-2"
                   >
                     <Send className="w-5 h-5" />
                     Send Message
@@ -193,31 +193,31 @@ export default function ContactPage() {
 
             {/* Quick Links & FAQ */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Frequently Asked</h2>
+              <h2 className="text-3xl font-bold text-[#1A3E6F] mb-8">Frequently Asked</h2>
               <div className="space-y-6">
-                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-                  <h4 className="text-lg font-bold text-gray-900 mb-2">What services do you offer?</h4>
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-[#BFC5CC]">
+                  <h4 className="text-lg font-bold text-[#1A3E6F] mb-2">What services do you offer?</h4>
                   <p className="text-gray-600">We provide structural engineering, project management, structural audits, and heritage conservation services.</p>
                 </div>
 
-                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-                  <h4 className="text-lg font-bold text-gray-900 mb-2">How long does a typical project take?</h4>
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-[#BFC5CC]">
+                  <h4 className="text-lg font-bold text-[#1A3E6F] mb-2">How long does a typical project take?</h4>
                   <p className="text-gray-600">Project timelines vary based on complexity and scope. We'll provide detailed estimates during consultation.</p>
                 </div>
 
-                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-                  <h4 className="text-lg font-bold text-gray-900 mb-2">Do you handle heritage projects?</h4>
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-[#BFC5CC]">
+                  <h4 className="text-lg font-bold text-[#1A3E6F] mb-2">Do you handle heritage projects?</h4>
                   <p className="text-gray-600">Yes, we specialize in heritage conservation and restoration of historic structures.</p>
                 </div>
 
-                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-                  <h4 className="text-lg font-bold text-gray-900 mb-2">What areas do you serve?</h4>
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-[#BFC5CC]">
+                  <h4 className="text-lg font-bold text-[#1A3E6F] mb-2">What areas do you serve?</h4>
                   <p className="text-gray-600">We serve clients across India with offices in major cities and international experience.</p>
                 </div>
 
                 <Link
                   href="/projects"
-                  className="inline-block w-full text-center px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-xl hover:from-blue-700 hover:to-cyan-700 transition-all transform hover:scale-105 shadow-lg"
+                  className="inline-block w-full text-center px-8 py-4 bg-gradient-to-r from-[#1F86C8] to-[#1A3E6F] text-white font-bold rounded-xl hover:shadow-lg transition-all transform hover:scale-105 shadow-lg"
                 >
                   View Our Projects
                 </Link>
@@ -226,11 +226,11 @@ export default function ContactPage() {
           </div>
 
           {/* Map Placeholder */}
-          <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden h-96 border border-gray-300">
+          <div className="bg-gradient-to-br from-[#F5F7FA] to-white rounded-2xl overflow-hidden h-96 border border-[#BFC5CC]">
             <div className="w-full h-full flex items-center justify-center">
               <div className="text-center">
-                <MapPin className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-600 font-semibold">Office Location</p>
+                <MapPin className="w-16 h-16 text-[#1F86C8] mx-auto mb-4" />
+                <p className="text-[#1A3E6F] font-semibold">Office Location</p>
                 <p className="text-gray-500 text-sm mt-2">Bhiwandi, Maharashtra</p>
               </div>
             </div>

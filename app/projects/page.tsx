@@ -23,12 +23,11 @@ export default function ProjectsPage() {
   ]
 
   return (
-    <div className="pt-24 min-h-screen bg-gradient-to-b from-white to-[#F5F7FA]">
+    <div className="min-h-screen bg-gradient-to-b from-white to-[#F5F7FA]">
       {/* Hero Section */}
       <div className="relative overflow-hidden bg-gradient-to-br from-[#1A3E6F] via-[#1F86C8] to-[#1A3E6F]">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#1F86C8] via-[#BFC5CC] to-[#1A3E6F]"></div>
-        
         <div className="container mx-auto px-4 py-20 md:py-28 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 text-white font-semibold text-sm mb-6 border border-white/20">
